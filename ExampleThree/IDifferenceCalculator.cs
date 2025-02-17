@@ -7,6 +7,6 @@ public interface IDifferenceCalculator<T> {
     event Action<string>? OnDifferenceChecked;
     
     // Default method in interface (C# 8.0 and later)
-    bool  Validate(IReadOnlyList<T>? numbers) => numbers?.Count > 1;
+    bool Validate(IReadOnlyList<T>? numbers) => numbers?.Count > 1;
 
 }

@@ -6,7 +6,7 @@ public abstract class DifferenceCheckerBase<T>: IDifferenceCalculator<T> where T
     public event Action<string>? OnDifferenceChecked;
 
     public abstract bool IsConsistent(IReadOnlyList<T>? numbers);
-    
+
     protected void Notify(string message){
         OnDifferenceChecked?.Invoke(message);
     }
