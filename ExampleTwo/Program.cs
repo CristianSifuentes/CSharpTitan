@@ -22,6 +22,10 @@
             Console.WriteLine(calculation);
             Console.WriteLine("---");
         }
+
+        // NumberOperation operation = CheckConditions.SumNumbers;
+        // int result2 = operation([1, 2, 3, 4, 5]);   
+        // Console.WriteLine($"The greatest difference is {result2}");
     
     }
 }

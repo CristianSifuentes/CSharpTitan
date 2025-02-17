@@ -1,3 +1,7 @@
+
+// Delegate for custom number operations
+public delegate int NumberOperation(IReadOnlyList<int> numbers);
+
 // Base class enforcing a contract
 public abstract class DifferenceCalculatorBase {
     
