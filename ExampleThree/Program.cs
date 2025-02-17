@@ -26,6 +26,12 @@ class Program
             Console.WriteLine("---");
         }
 
+        // Async Stream Example
+        Console.WriteLine("\n[Async Stream Execution]");
+        await foreach(var result in DifferenceCheckerAsync.CheckAsync(testCases)){
+            Console.WriteLine($"The difference is consistent: {result}");
+        }
+
     }
 
 }

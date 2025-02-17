@@ -1,5 +1,7 @@
 // Concrete class implementing the Logic
-public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struct{
+using System.Numerics;
+
+public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struct, INumber<T>{
     public override bool IsConsistent(IReadOnlyList<T>? numbers)
     {
         // if(!Validate(numbers)) return false;
@@ -13,9 +15,19 @@ public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struc
         return isConsistent;
     }
 
-    private static IEnumerable<T> GetDifferences(IReadOnlyList<T>? numbers)
-    {
-        throw new NotImplementedException();
+    private static IEnumerable<T> GetDifferences(IReadOnlyList<T>? numbers){
+      if(numbers == null || numbers.Count < 2) yield break;
+      
+      //Represents an object whose operations will be resolved at runtime.
+      dynamic? firstDiff = null;
+      for(int i = 1; i < numbers.Count; i++){
+            dynamic diff = numbers[i] - numbers[i - 1];
+            if(firstDiff == null){
+                firstDiff = diff;
+            }
+            yield return diff;
+
+      }
     }
 
 } 
