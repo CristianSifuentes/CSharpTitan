@@ -43,24 +43,28 @@ public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struc
     }
     
 
+    /// <summary>
+    /// Get the differences between the numbers in the sequence
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    private static IEnumerable<double> GetDifferencesList(IReadOnlyList<T>? numbers)
+    {
+        if (numbers is null || numbers.Count < 2) return new List<double>();
 
-    // private static IEnumerable<double> GetDifferencesList(IReadOnlyList<T>? numbers)
-    // {
-    //     if (numbers is null || numbers.Count < 2) return new List<double>();
-
-    //     double? firstDiff = null;
-    //     List<double> differences = new();
+        double? firstDiff = null;
+        List<double> differences = new();
         
-    //     for (int i = 1; i < numbers.Count; i++)
-    //     {
-    //         double diff = numbers[i].ToDouble(null) - numbers[i - 1].ToDouble(null);
+        for (int i = 1; i < numbers.Count; i++)
+        {
+            double diff = Convert.ToDouble(numbers[i]) - Convert.ToDouble(numbers[i - 1]);
 
-    //         if (firstDiff is null) firstDiff = diff;
-    //         differences.Add(diff);
-    //     }
+            if (firstDiff is null) firstDiff = diff;
+            differences.Add(diff);
+        }
 
-    //     return differences;
-    // }
+        return differences;
+    }
 
     
 } 
