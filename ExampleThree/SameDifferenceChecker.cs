@@ -2,8 +2,13 @@
 using System.Numerics;
 
 public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struct, INumber<T>{
-    public override bool IsConsistent(IReadOnlyList<T>? numbers)
-    {
+
+    /// <summary>
+    /// Check if the numbers in the sequence have the same difference
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public override bool IsConsistent(IReadOnlyList<T>? numbers){
         // if(!Validate(numbers)) return false;
         if (!((IDifferenceCalculator<T>)this).Validate(numbers)) return false;
         
@@ -15,6 +20,11 @@ public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struc
         return isConsistent;
     }
 
+    /// <summary>
+    /// Get the differences between the numbers in the sequence
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
     private static IEnumerable<T> GetDifferences(IReadOnlyList<T>? numbers){
       if(numbers == null || numbers.Count < 2) yield break;
       
@@ -26,8 +36,31 @@ public class SameDifferenceChecker<T> : DifferenceCheckerBase<T> where T : struc
                 firstDiff = diff;
             }
             yield return diff;
+            // convert a method in a iterator block to a method that returns a list
+            // return differences.ToList();
 
       }
     }
+    
 
+
+    // private static IEnumerable<double> GetDifferencesList(IReadOnlyList<T>? numbers)
+    // {
+    //     if (numbers is null || numbers.Count < 2) return new List<double>();
+
+    //     double? firstDiff = null;
+    //     List<double> differences = new();
+        
+    //     for (int i = 1; i < numbers.Count; i++)
+    //     {
+    //         double diff = numbers[i].ToDouble(null) - numbers[i - 1].ToDouble(null);
+
+    //         if (firstDiff is null) firstDiff = diff;
+    //         differences.Add(diff);
+    //     }
+
+    //     return differences;
+    // }
+
+    
 } 
