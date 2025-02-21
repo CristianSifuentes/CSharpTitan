@@ -16,4 +16,13 @@ public class Class : BaseClass{
        // ✔ The method will return the next value when the foreach loop requests it.
        yield return 1; yield return 2; yield return 3; yield return 4; yield return 5;
     }
+
+    /// <summary>
+    ///  This method returns a list of numbers
+    /// </summary>
+    /// <returns></returns>
+    public override List<int> GetNumbersUsingList(){
+       Console.WriteLine("Generating numbers using list...");
+       return new List<int> { 1, 2, 3, 4, 5 };
+    }
 }

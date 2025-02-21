@@ -12,6 +12,11 @@ namespace ExampleFive
                 Console.WriteLine(num);
             }
 
+            // This is a list of numbers using the List<int> class from the System.Collections.Generic namespace
+            foreach (var num in obj.GetNumbersUsingList()){
+                Console.WriteLine(num);
+            }
+
         }
     }
 }
