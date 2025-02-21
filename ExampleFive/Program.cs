@@ -1,2 +1,17 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+namespace ExampleFive
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            BaseClass obj = new Class();
+            // Console.WriteLine(obj.GetNumbers());
+            foreach (var num in obj.GetNumbers()){
+                Console.WriteLine(num);
+            }
+
+        }
+    }
+}
