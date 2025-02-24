@@ -6,6 +6,15 @@ namespace ExampleFive
     {
         static void Main(string[] args)
         {
+
+            /*
+            yield is a special keyword in C# used to produce elements on demand rather than computing all elements at once.
+            */
+            /*
+            yield es una palabra clave especial en C# que se utiliza para producir elementos bajo demanda en lugar de calcular todos los elementos a la vez.
+
+            */
+
             BaseClass obj = new Class();
             // Console.WriteLine(obj.GetNumbers());
             foreach (var num in obj.GetNumbers()){
