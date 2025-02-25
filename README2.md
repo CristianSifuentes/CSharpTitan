@@ -1,18 +1,17 @@
 # 🌟 Advanced C# Implementation: Modern C# Features & Best Practices
 
 ## 📃 Table of Contents
-- [📌 Overview](#-overview)
-- [🚀 Advanced C# Concepts Applied](#-advanced-c-concepts-applied)
-- [📝 C# Implementation](#-c-implementation)
-- [🔮 Explanation of Advanced C# Features](#-explanation-of-advanced-c-features)
-- [🔢 Performance Considerations](#-performance-considerations)
-- [🔍 Full Implementation](#-full-implementation)
-- [📚 License](#-license)
+- [📌 Overview](#overview)
+- [🚀 Advanced C# Concepts Applied](#advanced-c-concepts-applied)
+- [📝 C# Implementation](#c-implementation)
+- [🔮 Explanation of Advanced C# Features](#explanation-of-advanced-c-features)
+- [🔢 Performance Considerations](#performance-considerations)
+- [🔍 Full Implementation](#full-implementation)
 
 
 ---
 
-## 📌 Overview
+## Overview
 This repository showcases a **highly professional and modern** C# solution using advanced C# concepts, ensuring **scalability, performance, and maintainability**. The project includes:
 - **Object-Oriented Principles** (Encapsulation, Inheritance, Polymorphism)
 - **Performance Optimizations** (LINQ, Span<T>, Lazy Evaluation)
@@ -20,7 +19,7 @@ This repository showcases a **highly professional and modern** C# solution using
 
 ---
 
-## 🚀 Advanced C# Concepts Applied
+## Advanced C# Concepts Applied
 | Concept | Description |
 |---------|------------|
 | **📚 Inheritance & Polymorphism** | Uses an **abstract base class** with a **derived class** for extensibility. |
@@ -39,7 +38,7 @@ This repository showcases a **highly professional and modern** C# solution using
 
 ---
 
-## 📝 C# Implementation
+## C# Implementation
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -73,7 +72,7 @@ public class GreatestDifferenceCalculator : DifferenceCalculatorBase
 
 ---
 
-## 🔮 Explanation of Advanced C# Features
+## Explanation of Advanced C# Features
 ### ✨ **1. Encapsulation & Init-Only Properties**
 ```csharp
 public record CalculationResult(int Min, int Max, int Difference);
@@ -103,7 +102,7 @@ if (numbers is [var first, .., var last])
 
 ---
 
-## 🔢 Performance Considerations
+## Performance Considerations
 | Optimization | Explanation |
 |-------------|-------------|
 | **🏆 Avoids Unnecessary Memory Allocation** | Uses `Span<int>` to **process large datasets efficiently**. |
@@ -113,21 +112,18 @@ if (numbers is [var first, .., var last])
 
 ---
 
-## 🔍 Full Implementation
+## Full Implementation
 ### 📂 **Project Structure**
 ```
 📦 AdvancedCSharpProject
  ┣ 📂 src
+ ┃ ┣ 📜 CalculationResult.cs
+ ┃ ┣ 📜 CheckConditions.cs
  ┃ ┣ 📜 DifferenceCalculatorBase.cs
  ┃ ┣ 📜 GreatestDifferenceCalculator.cs
- ┃ ┣ 📜 CalculationResult.cs
+ ┃ ┣ 📜 NumericAnalyzerAttribute.cs
  ┗ ┣ 📜 Program.cs
 ```
-
----
-
-## 📜 License
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
