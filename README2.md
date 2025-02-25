@@ -121,9 +121,7 @@ if (numbers is [var first, .., var last])
  ┃ ┣ 📜 DifferenceCalculatorBase.cs
  ┃ ┣ 📜 GreatestDifferenceCalculator.cs
  ┃ ┣ 📜 CalculationResult.cs
- ┣ 📂 tests
- ┃ ┣ 📜 DifferenceCalculatorTests.cs
- ┗ 📜 Program.cs
+ ┗ ┣ 📜 Program.cs
 ```
 
 ---
