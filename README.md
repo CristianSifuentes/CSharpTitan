@@ -70,7 +70,7 @@ public delegate bool CheckCondition<T>(IEnumerable<T> collection, T item, int th
 - Calls the delegate dynamically.
 
 ```csharp
-public class NumberChecker<T> : NumberCheckerBase<T>
+public class NumberChecker<T> : NumberCheckerBase<T> where T: struct
 {
     public NumberChecker(CheckCondition<T> conditionChecker) : base(conditionChecker) { }
 
