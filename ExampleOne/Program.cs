@@ -16,6 +16,10 @@ class Program {
        // Another way to create a NumberChecker
        //NumberChecker<int> checker = new NumberChecker<int>(CheckConditions.CountOccurrences);
 
+       EventDrivenChecker<int> eventDrivenChecker = new (CheckConditions.CountOccurrences);
+       eventDrivenChecker.OnConditionChecked += (message) => Console.WriteLine(message);
+       Console.WriteLine(eventDrivenChecker.Contains(numbers, 1, 2));
+
     }
 
 }
