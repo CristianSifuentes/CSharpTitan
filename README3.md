@@ -1,17 +1,15 @@
 # 🌟 Advanced C# Implementation: Core OOP, Generics, Interfaces & More
 
 ## 📃 Table of Contents
-- [📌 Overview](#-overview)
-- [🚀 Advanced C# Concepts Applied](#-advanced-c-concepts-applied)
-- [📝 C# Implementation](#-c-implementation)
-- [🔮 Explanation of Advanced C# Features Used](#-explanation-of-advanced-c-features-used)
-- [🔢 Performance Considerations](#-performance-considerations)
-- [🔍 Full Implementation](#-full-implementation)
-- [📚 License](#-license)
-
+- [📌 Overview](#overview)
+- [🚀 Advanced C# Concepts Applied](#advanced-c-concepts-applied)
+- [📝 C# Implementation](#c-implementation)
+- [🔮 Explanation of Advanced C# Features Used](#explanation-of-advanced-c-features-used)
+- [🔢 Performance Considerations](#performance-considerations)
+- [🔍 Full Implementation](#full-implementation)
 ---
 
-## 📌 Overview
+## Overview
 This repository showcases an **advanced** C# implementation that incorporates:
 - **Core Object-Oriented Principles** (Abstraction, Polymorphism, Encapsulation)
 - **Modern C# Features** (Nullable Types, Expression-Bodied Members, Interpolated Strings)
@@ -19,7 +17,7 @@ This repository showcases an **advanced** C# implementation that incorporates:
 
 ---
 
-## 🚀 Advanced C# Concepts Applied
+## Advanced C# Concepts Applied
 | Concept | Description |
 |---------|------------|
 | **📚 Core OOP Features** | Uses **abstraction, polymorphism, and encapsulation** to design scalable components. |
@@ -34,7 +32,7 @@ This repository showcases an **advanced** C# implementation that incorporates:
 
 ---
 
-## 📝 C# Implementation
+## C# Implementation
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -44,30 +42,30 @@ using System.Threading.Tasks;
 // Delegate for condition checking
 public delegate bool ConditionCheck<T>(IEnumerable<T> collection, T item);
 
-// Interface with a default method
-public interface IDifferenceCalculator<T>
+// Interface defining the contract with a default method
+public interface IDifferenceCalculator<T> where T : struct
 {
     bool IsConsistent(IReadOnlyList<T> numbers);
     event Action<string>? OnChecked;
     
-    // Default method
+    // Default method in interface (C# 8+ feature)
     bool Validate(IReadOnlyList<T>? numbers) => numbers?.Count > 1;
 }
 
 // Abstract base class with event-driven notifications
-public abstract class DifferenceCalculatorBase<T> : IDifferenceCalculator<T>
+public abstract class DifferenceCalculatorBase<T> : IDifferenceCalculator<T> where T : struct
 {
     public event Action<string>? OnChecked;
     
-    public abstract bool IsConsistent(IReadOnlyList<T> numbers);
+    public abstract bool IsConsistent(IReadOnlyList<T>? numbers);
     
     protected void Notify(string message) => OnChecked?.Invoke(message);
 }
 
 // Concrete class implementing the logic
-public class SameDifferenceChecker<T> : DifferenceCalculatorBase<T>
+public class SameDifferenceChecker<T> : DifferenceCalculatorBase<T>  where T : struct
 {
-    public override bool IsConsistent(IReadOnlyList<T> numbers)
+    public override bool IsConsistent(IReadOnlyList<T>? numbers)
     {
         if (!Validate(numbers)) return false;
         var differences = GetDifferences(numbers).ToList();
@@ -76,7 +74,7 @@ public class SameDifferenceChecker<T> : DifferenceCalculatorBase<T>
         return isConsistent;
     }
 
-    private static IEnumerable<double> GetDifferences(IReadOnlyList<T> numbers)
+    private static IEnumerable<T> GetDifferences(IReadOnlyList<T>? numbers)
     {
         if (numbers is null || numbers.Count < 2) yield break;
         for (int i = 1; i < numbers.Count; i++)
@@ -85,11 +83,27 @@ public class SameDifferenceChecker<T> : DifferenceCalculatorBase<T>
         }
     }
 }
+
+// Async Stream Example
+public static class DifferenceCheckerAsync
+{
+    public static async IAsyncEnumerable<bool> CheckAsync<T>(IEnumerable<IReadOnlyList<T>> testCases) where T : struct
+    {
+        var checker = new SameDifferenceChecker<T>();
+        
+        foreach (var testCase in testCases)
+        {
+            await Task.Delay(100); // Simulating async operation
+            yield return checker.IsConsistent(testCase);
+        }
+    }
+}
+
 ```
 
 ---
 
-## 🔮 Explanation of Advanced C# Features Used
+## Explanation of Advanced C# Features Used
 ### ✨ **1. Default Interface Methods**
 ```csharp
 bool Validate(IReadOnlyList<T>? numbers) => numbers?.Count > 1;
@@ -126,7 +140,7 @@ if (numbers is [var first, .., var last])
 
 ---
 
-## 🔢 Performance Considerations
+## Performance Considerations
 | Optimization | Explanation |
 |-------------|-------------|
 | **🏆 Avoids Unnecessary Memory Allocation** | Uses `yield return` to **stream data** instead of allocating lists. |
@@ -136,25 +150,21 @@ if (numbers is [var first, .., var last])
 
 ---
 
-## 🔍 Full Implementation
+## Full Implementation
 ### 📂 **Project Structure**
 ```
 📦 AdvancedCSharpProject
  ┣ 📂 src
+ ┃ ┣ 📜 DifferenceCheckerAsync.cs
  ┃ ┣ 📜 DifferenceCalculatorBase.cs
+ ┃ ┣ 📜 IDifferenceCalculator.cs
  ┃ ┣ 📜 SameDifferenceChecker.cs
  ┃ ┣ 📜 ConditionCheck.cs
- ┣ 📂 tests
- ┃ ┣ 📜 DifferenceCalculatorTests.cs
- ┗ 📜 Program.cs
+ ┗ ┣ 📜 Program.cs
 ```
 
 ---
 
-## 📜 License
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
 
 🔥 **This repository showcases a professional, modern C# implementation incorporating advanced programming techniques.** 🚀  
 💡 **Feel free to contribute and enhance the project!**
